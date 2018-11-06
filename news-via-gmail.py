@@ -1,7 +1,6 @@
 import smtplib
 import auth
 import requests
-import json
 
 
 # function to send email
@@ -19,28 +18,14 @@ def send_email(subject, msg):
         print("Email failed to send.")
 
 
-# gather news
+# gather headlines from newsapi,org with apikey
 url = ('https://newsapi.org/v2/top-headlines?'
        'country=us&'
        'apiKey=d4af94b7f71642cd8d60f97b59ab9317')
-response = requests.get(url)
-# print(response.json())
+response = requests.get(url)    
 data = response.json()
-message=[]
-
-#  write to file
-with open('data', 'w') as outfile:
-        for a in data['articles']:
-            outfile.write(a['source']['name'] + ' : ' + a['title'] + '\n')
-            outfile.write("'" + a['url'] + "'" + '\n')
-            outfile.write('\n')
-
-# read from file
-with open('data.json') as json_file:
-    data = json.load(json_file)
-    for a in data['articles']:
-        message.append(a['source']['name'] + ' : ' + a['title'] + '\n')
-        message.append(a['url'] + '\n')
+# save source name, title, and url to each article into 'message' var
+message = [a['source']['name'] + ' : ' + a['title'] + '\n' + a['url'] + '\n' for a in data['articles']]
 
 # send email
 subject = "news test"

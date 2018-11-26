@@ -1,5 +1,5 @@
 import smtplib
-import auth
+import nvg-auth
 import requests
 
 

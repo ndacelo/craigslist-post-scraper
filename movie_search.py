@@ -1,7 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
-from creds import *
+from movie_search_creds import *
 
 
 class MoviesSearch(object):

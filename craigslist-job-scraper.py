@@ -9,7 +9,7 @@ import json
 
 
 class CraiglistJobScraper(object):
-    """ 
+    
     def __init__(self):
         # self.job_type = job_type
         self.url = 'https://paris.craigslist.fr/d/temp-jobs/search/ggg?lang=en&cc=gb'
